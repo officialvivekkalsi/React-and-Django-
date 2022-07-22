@@ -1,0 +1,71 @@
+.ht{
+    margin-left: 8%;
+    margin-top: 2%;
+}
+
+/* body:{background-image: linear-gradient(to right bottom, #ffffff, #d5caff, #ae96ff, #855ff9, #5819ee);} */
+
+.copyright{
+  margin-left: 44%;
+  margin-bottom: 3%;
+  margin-top: 2%;
+}
+
+body{
+  background: rgb(48, 214, 243);
+}
+
+
+main{
+  min-height: 75vh;
+  margin-inline-end: 5%;
+}
+
+.Prostructure{
+  margin-top: 5%;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+.Card{
+  margin-bottom: 5%;
+  border-radius: 10px;
+}
+
+.img{
+  padding: 5%;
+}
+
+.productscreen{
+  margin: 9%;
+  font-size: 230%;
+}
+
+.latestpro{
+  margin-left: 5%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-size: 300%;
+  font-family:'Times New Roman', Times, serif;
+  font-style: oblique;  
+}
+
+.loginscreen{
+  margin-top: 20%;
+}
+.loginsc{
+  margin-top: 5%;
+}
+
+.registerscreen{
+  margin: 20%;
+}
+
+.cartScreen{
+  margin-top: 5%;
+  margin-left: 10%;
+}
+
+.Subtotal{
+  margin-top: 10%;
+}
