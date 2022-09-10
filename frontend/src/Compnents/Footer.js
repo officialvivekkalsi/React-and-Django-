@@ -5,11 +5,7 @@ function Footer() {
   return (
     <footer className="copyright">
       <Container>
-        <Row>
-          {/* <Col className="text-center py-3"> */}
-          Copyright &copy; Shortway Shop
-          {/* </Col> */}
-        </Row>
+        <Row>Copyright &copy; Shortway Shop</Row>
       </Container>
     </footer>
   );

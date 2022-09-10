@@ -3,15 +3,12 @@ import {
   ORDER_CREATE_REQUEST,
   ORDER_CREATE_SUCCESS,
   ORDER_CREATE_FAIL,
-
   ORDER_DETAILS_REQUEST,
   ORDER_DETAILS_SUCCESS,
   ORDER_DETAILS_FAIL,
-
   ORDER_PAY_REQUEST,
   ORDER_PAY_SUCCESS,
   ORDER_PAY_FAIL,
-
 } from "../constants/orderConstants";
 
 import { CART_CLEAR_ITEMS } from "../constants/cartConstant";
@@ -45,8 +42,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
       payload: data,
     });
 
-    localStorage.removeItem('cartItems')
-
+    localStorage.removeItem("cartItems");
   } catch (error) {
     dispatch({
       type: ORDER_CREATE_FAIL,
@@ -58,10 +54,9 @@ export const createOrder = (order) => async (dispatch, getState) => {
   }
 };
 
-
-export const getOrderDetails = (id)=> async(dispatch,getState)=>{
-  try{
-    dispatch({ type: ORDER_DETAILS_REQUEST })
+export const getOrderDetails = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: ORDER_DETAILS_REQUEST });
 
     const {
       userLogin: { userInfo },
@@ -80,7 +75,6 @@ export const getOrderDetails = (id)=> async(dispatch,getState)=>{
       type: ORDER_DETAILS_SUCCESS,
       payload: data,
     });
-
   } catch (error) {
     dispatch({
       type: ORDER_DETAILS_FAIL,
@@ -90,13 +84,11 @@ export const getOrderDetails = (id)=> async(dispatch,getState)=>{
           : error.message,
     });
   }
-}
+};
 
-export const payOrder=(id, paymentResult)=>async(dispatch,getState)=>{
-  // this is going to be from paypal and not sure how to use this in backend
-  try{
-    dispatch({type:ORDER_PAY_REQUEST},
-    )
+export const payOrder = (id, paymentResult) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: ORDER_PAY_REQUEST });
 
     const {
       userLogin: { userInfo },
@@ -109,13 +101,16 @@ export const payOrder=(id, paymentResult)=>async(dispatch,getState)=>{
       },
     };
 
-    const { data } = await axios.put(`/api/orders/${id}/pay/`,paymentResult, config);
+    const { data } = await axios.put(
+      `/api/orders/${id}/pay/`,
+      paymentResult,
+      config
+    );
 
     dispatch({
       type: ORDER_PAY_SUCCESS,
       payload: data,
     });
-
   } catch (error) {
     dispatch({
       type: ORDER_PAY_FAIL,
@@ -125,4 +120,4 @@ export const payOrder=(id, paymentResult)=>async(dispatch,getState)=>{
           : error.message,
     });
   }
-}
+};

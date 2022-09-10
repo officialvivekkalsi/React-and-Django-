@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { ListGroup, Button, Row, Col, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useParams, useNavigate} from "react-router-dom";
-// import Products from "./products";
+import { useParams, useNavigate } from "react-router-dom";
 import Rating from "./Rating";
-// import axios from "axios";
 import "../home.css";
 import { useDispatch, useSelector } from "react-redux";
 import { listProductDetails } from "../actions/productActions";
@@ -14,19 +12,17 @@ import Message from "./message";
 const ProductScreen = () => {
   const [qty, setQty] = useState(1);
   const { id } = useParams();
-  // const Product = Products.find((p) => p._id === Number(id));
   const dispatch = useDispatch();
   const Navigate = useNavigate();
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, Product } = productDetails;
-  
+
   useEffect(() => {
     dispatch(listProductDetails(id));
   }, []);
 
   const AddToCartHandler = () => {
-    // history.push(`/cart/${id}?qty=${qty}`)
-    Navigate(`/cart/${id}?qty=${qty}`)
+    Navigate(`/cart/${id}?qty=${qty}`);
   };
 
   return (
@@ -47,8 +43,7 @@ const ProductScreen = () => {
           <Col md={6}>
             <img src={Product.image} alt={Product.image} />
           </Col>
-          <Col md={3}> 
-
+          <Col md={3}>
             <ListGroup variant="flush">
               <ListGroup.Item>
                 <h3>{Product.name}</h3>
@@ -99,7 +94,7 @@ const ProductScreen = () => {
                 <Col>
                   <h2>
                     {Product.countInStock > 0 ? "In Stock" : "Out of Stock"}
-                  </h2> 
+                  </h2>
                 </Col>
               </ListGroup.Item>
 
@@ -144,6 +139,6 @@ const ProductScreen = () => {
       )}
     </div>
   );
-}
+};
 
 export default ProductScreen;

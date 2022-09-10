@@ -1,9 +1,9 @@
-import React, { useState, useEffect,} from "react";
+import React, { useState, useEffect } from "react";
 import Loader from "./loader";
 import Message from "./message";
 import { Row, Col, Form, Button } from "react-bootstrap";
 import { login } from "../actions/userAction";
-import { Link,  useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../home.css";
 import LoginFormContainer from "../container/loginFormContainer";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,36 +11,31 @@ const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
 
-  const redirect = location.search
-    ? location.search.split('=')[1]
-    : '/';
+  const redirect = location.search ? location.search.split("=")[1] : "/";
 
-    const userLogin = useSelector(state=> state.userLogin)
-    const {error,loading,userInfo} = userLogin
+  const userLogin = useSelector((state) => state.userLogin);
+  const { error, loading, userInfo } = userLogin;
 
-    useEffect(()=>{
-      if (userInfo) {
-        navigate(redirect)
-      }
-    },[navigate,userInfo,redirect])
+  useEffect(() => {
+    if (userInfo) {
+      navigate(redirect);
+    }
+  }, [navigate, userInfo, redirect]);
 
-  // const redirect = location.search ? location.search.split('=')[1] : "/";
-  
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(login(email,password))
+    dispatch(login(email, password));
   };
 
   return (
-    
     <LoginFormContainer>
       <h1 className="loginscreen">Sign in</h1>
-      {error && <Message variant= 'danger'>{error}</Message>}
-      {loading && <Loader/>}
+      {error && <Message variant="danger">{error}</Message>}
+      {loading && <Loader />}
       <Form onSubmit={submitHandler} className="loginsc">
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
@@ -65,7 +60,7 @@ const LoginScreen = () => {
           />
         </Form.Group>
 
-        <Button  cd variant="primary" type="submit">
+        <Button cd variant="primary" type="submit">
           Sign in
         </Button>
       </Form>

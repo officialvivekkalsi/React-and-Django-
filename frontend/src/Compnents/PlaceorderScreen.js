@@ -8,14 +8,14 @@ import "../home.css";
 import CheckeoutSteps from "./CheckoutSteps";
 import Message from "./message";
 import { createOrder } from "../actions/OrderAction";
-import {ORDER_CREATE_RESET} from '../constants/orderConstants'
+import { ORDER_CREATE_RESET } from "../constants/orderConstants";
 
 function PlaceOrderScreen() {
   const orderCreate = useSelector((state) => state.orderCreate);
   const { order, error, success } = orderCreate;
 
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const cart = useSelector((state) => state.cart);
 
   cart.itemsPrice = cart.cartItems
@@ -33,17 +33,17 @@ function PlaceOrderScreen() {
   if (!cart.paymentMethod) {
     navigate("/payment");
   }
-  
+
   useEffect(() => {
     if (success) {
       navigate(`/order/${order._id}`);
-      dispatch({type:ORDER_CREATE_RESET})
+      dispatch({ type: ORDER_CREATE_RESET });
     }
   }, [success, navigate]);
-  
+
   const placeOrder = () => {
-      dispatch(
-          createOrder({
+    dispatch(
+      createOrder({
         orderItems: cart.cartItems,
         shippingAddress: cart.shippingAddress,
         paymentMethod: cart.paymentMethod,
@@ -54,9 +54,9 @@ function PlaceOrderScreen() {
       })
     );
   };
-  
+
   return (
-      <div>
+    <div>
       <CheckeoutSteps step1 step2 step3 step4 />
       <Row>
         <Col md={8}>
@@ -67,9 +67,8 @@ function PlaceOrderScreen() {
               <p>
                 <strong>Shipping: </strong>
                 {cart.shippingAddress.address}, {cart.shippingAddress.city},
-                
-                {cart.shippingAddress.postalCode},
-                {cart.shippingAddress.country},
+                {cart.shippingAddress.postalCode},{cart.shippingAddress.country}
+                ,
               </p>
             </ListGroup.Item>
 
@@ -113,7 +112,7 @@ function PlaceOrderScreen() {
                     </ListGroup.Item>
                   ))}
                 </ListGroup>
-              )} 
+              )}
             </ListGroup.Item>
           </ListGroup>
         </Col>

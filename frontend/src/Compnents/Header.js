@@ -2,15 +2,15 @@ import React from "react";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
-import {logout} from '../actions/userAction'
+import { logout } from "../actions/userAction";
 function Header() {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-  const dispatch =useDispatch()
+  const dispatch = useDispatch();
 
   const logoutHandler = () => {
-    dispatch(logout())
+    dispatch(logout());
   };
 
   return (
@@ -30,7 +30,7 @@ function Header() {
                 </Nav.Link>
               </LinkContainer>
               {userInfo ? (
-                <NavDropdown title={ userInfo.username} id="username">
+                <NavDropdown title={userInfo.username} id="username">
                   <LinkContainer to="/profile/">
                     <NavDropdown.Item>Profile</NavDropdown.Item>
                   </LinkContainer>
