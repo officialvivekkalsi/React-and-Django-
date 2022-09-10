@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-
 REST_FRAMEWORK = {
 
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -188,3 +187,11 @@ MEDIA_ROOT='static/images'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS=True
+
+
+# STATICE_URL='/static/'
+# MEDIA_URL='/images'
+# STATICFILES_DIRS=[
+#     BASE_DIR /'static'
+# ]
+# MEDIA_ROOT='static/images'
