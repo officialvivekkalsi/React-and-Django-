@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 import "../home.css";
 import CheckeoutSteps from "./CheckoutSteps";
 import Message from "./message";
-import { createOrder } from "../actions/OrdreAction";
-
+import { createOrder } from "../actions/OrderAction";
+import {ORDER_CREATE_RESET} from '../constants/orderConstants'
 
 function PlaceOrderScreen() {
   const orderCreate = useSelector((state) => state.orderCreate);
@@ -37,11 +37,11 @@ function PlaceOrderScreen() {
   useEffect(() => {
     if (success) {
       navigate(`/order/${order._id}`);
+      dispatch({type:ORDER_CREATE_RESET})
     }
   }, [success, navigate]);
   
   const placeOrder = () => {
-      console.log('clicked')
       dispatch(
           createOrder({
         orderItems: cart.cartItems,
@@ -55,7 +55,6 @@ function PlaceOrderScreen() {
     );
   };
   
-
   return (
       <div>
       <CheckeoutSteps step1 step2 step3 step4 />
@@ -91,7 +90,7 @@ function PlaceOrderScreen() {
                   {cart.cartItems.map((item, index) => (
                     <ListGroup.Item key={index}>
                       <Row>
-                        <Col md={1}>
+                        <Col md={2}>
                           <Image
                             src={item.image}
                             alt={item.name}
@@ -114,7 +113,7 @@ function PlaceOrderScreen() {
                     </ListGroup.Item>
                   ))}
                 </ListGroup>
-              )}
+              )} 
             </ListGroup.Item>
           </ListGroup>
         </Col>

@@ -19,7 +19,7 @@ const ProductScreen = () => {
   const Navigate = useNavigate();
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, Product } = productDetails;
-  console.log("Product", Product);
+  
   useEffect(() => {
     dispatch(listProductDetails(id));
   }, []);
@@ -27,7 +27,6 @@ const ProductScreen = () => {
   const AddToCartHandler = () => {
     // history.push(`/cart/${id}?qty=${qty}`)
     Navigate(`/cart/${id}?qty=${qty}`)
-    console.log("add to cart clicked", id);
   };
 
   return (

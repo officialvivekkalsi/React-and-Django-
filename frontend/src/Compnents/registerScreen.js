@@ -33,7 +33,6 @@ const RegisterScreen = () => {
   // const redirect = location.search ? location.search.split('=')[1] : "/";
 
   const SubmitHandler = (e) => {
-    console.log('submit handler')
     e.preventDefault();
     if (password !== confirmpassword) {
       setMessage("passwords do not match");

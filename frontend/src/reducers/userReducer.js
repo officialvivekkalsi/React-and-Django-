@@ -26,7 +26,6 @@ export const userloginReducer  = (state = {}, action) => {
 
       case USER_LOGOUT:
           return {}
-
       default:
           return state
   }

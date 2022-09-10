@@ -62,7 +62,7 @@ export default function ShippingScreen() {
 
           <Form.Group controlid="postalCode">
             <Form.Label>Postal Code</Form.Label>
-             
+
             <Form.Control
              required
               type="postalCode"

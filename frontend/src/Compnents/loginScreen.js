@@ -41,7 +41,7 @@ const LoginScreen = () => {
       <h1 className="loginscreen">Sign in</h1>
       {error && <Message variant= 'danger'>{error}</Message>}
       {loading && <Loader/>}
-      <Form  className="loginsc">
+      <Form onSubmit={submitHandler} className="loginsc">
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
@@ -65,7 +65,7 @@ const LoginScreen = () => {
           />
         </Form.Group>
 
-        <Button onClick={submitHandler} cd variant="primary" type="submit">
+        <Button  cd variant="primary" type="submit">
           Sign in
         </Button>
       </Form>

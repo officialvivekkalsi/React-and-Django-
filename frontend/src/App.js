@@ -13,6 +13,7 @@ import ProfileScreen from './Compnents/profileScreen'
 import ShippingScreen from "./Compnents/ShippingScreen";
 import PaymentScreen from "./Compnents/PaymentScreen";
 import PlaceorderScreen from "./Compnents/PlaceorderScreen";
+import OrderScreen from './Compnents/OrderScreen'
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path='/profile/' element={< ProfileScreen />} />
             <Route path='/payment/' element={< PaymentScreen />} />
             <Route path='/placeorder' element={<PlaceorderScreen />} />
+            <Route path='/order/:id' element={<OrderScreen />} />
           </Routes>
         </Container>
       </main>

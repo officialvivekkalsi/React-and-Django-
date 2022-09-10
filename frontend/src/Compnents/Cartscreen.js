@@ -7,6 +7,7 @@ import { Card,ListGroup, Image,Row, Col, Form, Button } from "react-bootstrap";
 import Cartmessage from "../Compnents/Cartmessage";
 
 function Cartscreen() {
+
   const { id } = useParams();
   const location = useLocation();
   const ProductId = id;
@@ -16,7 +17,6 @@ function Cartscreen() {
   const navigate = useNavigate();
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
-  console.log("cartItems:", cartItems);
 
   useEffect(() => {
     if (ProductId) {
@@ -25,11 +25,10 @@ function Cartscreen() {
   }, [dispatch, ProductId, qty]);
 
   const removeFromCartHandler= (id) =>{
-    console.log('reomve cart',id)
     dispatch(removeFromCart(id))
   }
 
-  const checkoutHandler=()=>{
+  const checkoutHandler=( )=>{
     navigate('/login?redirect=shipping')
   }
   return (
@@ -49,7 +48,7 @@ function Cartscreen() {
                   <Image src={item.image} alt={item.name} fluid rounded />
                 </Col>
                 <Col md={3}>
-                  <Link to={`/product/${item.Product}`}>{item.name}</Link>
+                  <Link to={`/product/${id}`}>{item.name}</Link>
                 </Col>
 
                 <Col md={2}>${item.price}</Col>
@@ -64,7 +63,8 @@ function Cartscreen() {
                       )
                     }
                   >
-                    {[...Array(item.countInStock).keys()].map((x) => (
+                    
+                    {[...Array(item.countInStock).keys( )].map((x) => (
                       <option key={x + 1} value={x + 1}>
                         {x + 1}
                       </option>
@@ -111,7 +111,7 @@ function Cartscreen() {
             disabled={cartItems.length === 0}
             onClick={checkoutHandler}
           >
-            Proceed To Checkout
+              Proceed To Checkout
           </Button>
         </ListGroup.Item>
       </Card>

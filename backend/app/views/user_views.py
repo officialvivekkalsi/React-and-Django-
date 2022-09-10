@@ -12,12 +12,12 @@ from rest_framework import status
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
         data = super().validate(attrs)
-        serializer=UserSerializerwithtoken(self.user).data
+        # serializer=UserSerializerwithtoken(self.user).data
         # the serializer items is fields ='id','_id','isAdmin', 'username', 'email','name' 
-        for k ,v in serializer.items():
-            data[k] = v
-        # data["username"] = self.user.username
-        # data["email"] = self.user.email
+        # for k ,v in serializer.items():
+            # data[k] = v
+        data["username"] = self.user.username
+        data["email"] = self.user.email
         return data
 
 class MyTokenObtainPairView(TokenObtainPairView):

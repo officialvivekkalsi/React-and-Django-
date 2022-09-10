@@ -1,7 +1,7 @@
 import React from 'react'
 import {Alert} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
-function Message() {
+function Messages() {
   return (
     <div><>
     {[
@@ -14,5 +14,6 @@ function Message() {
   </></div>
   )
 }
+export default Messages
 
-export default Message
+
