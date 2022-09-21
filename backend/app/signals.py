@@ -9,4 +9,4 @@ def updateUser(sender, instance, **kwargs):
         user.username =  user.email
     print('Signal Triggered')
 
-pre_save.connect(updateUser, sender=User)
+pre_save.connect(updateUser, sender=User) 
